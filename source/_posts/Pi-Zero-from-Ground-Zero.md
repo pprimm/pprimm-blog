@@ -1,5 +1,5 @@
 ---
-title: Headless Raspberry Pi Zero with Ethernet Setup from Ground Zero on Windows 8
+title: Headless Raspberry Pi Zero Setup with Ethernet from Ground Zero on Windows 8
 date: 2016-10-02 19:44:14
 tags:
  - Raspberry Pi Zero
@@ -55,7 +55,7 @@ Follow these simple steps to prepare your microSC Card:
    ![](/images/Win32DiskImager.png)
    **_AGAIN, INSURE YOU HAVE SELECTED THE CORRECT DRIVE LETTER_**
 
-Carl Recktenwald Jr. has a [YouTube Video](https://www.youtube.com/watch?v=AVM7QaSndf8) that shows using SDFormatter and Win32 Disk Imager.  You can watch up to 2:30 where then begins a boot using monitor, keyboard and mouse.  But, we're going headless, so the remainder of that video doesn't pertain to what we're trying to accomplish.
+   Carl Recktenwald Jr. has a [YouTube Video](https://www.youtube.com/watch?v=AVM7QaSndf8) that shows using SDFormatter and Win32 Disk Imager.  You can watch up to 2:30 where then begins a boot using monitor, keyboard and mouse.  But, we're going headless, so the remainder of that video doesn't pertain to what we're trying to accomplish.
 
 # Boot the Pi Zero and Connect with PuTTY
 Follow these steps to boot and connect to your Pi Zero over SSH:
@@ -83,9 +83,11 @@ Follow these steps to boot and connect to your Pi Zero over SSH:
 
 4. Open the Configuration Tool and make any changes you would like.  You do this by entering the following command in PuTTY terminal:
 
-```bash
-$ sudo raspi-config
-```
+   ```bash
+   $ sudo raspi-config
+   ```
+
+   **Update 2016-10-03:** _A RasPi user notified me that starting with Jessie 2016-05-10, a script will auto-expand the file system on first boot.  You don't need to perform this step.  But, if you are interested in bringing up the Configuration Tool and looking around, you can go ahead and continue as a learning exercise; otherwise, jump down to step 5._
 
    Executing this command show you the configuration tool.  The only configuration item we're going to do now is expand the file system.  Select the fist item [1. Expand Filesystem] and select [Enter].  The filesystem will be expanded to used the full size of the SD Card.
 
@@ -95,43 +97,45 @@ $ sudo raspi-config
 
 5. Perform Jessie updates by entering the following two (2) commands in the terminal; allowing a command to complete before continuing to the next.
 
-```bash
-$ sudo apt-get update
-$ sudo apt-get upgrade
-```
+   ```bash
+   $ sudo apt-get update
+   $ sudo apt-get upgrade
+   ```
 
 # Install Git and NodeJS
 Now we're going to install Git and NodeJs.  Perform these steps:
 
 1. Install Git using the following command:
 
-```bash
-$ sudo apt-get install git
-```
+   ```bash
+   $ sudo apt-get install git
+   ```
 
 2. Install NodeJS using the following commands; allowing each to complete:
 
-```bash
-$ wget https://nodejs.org/dist/v4.5.0/node-v4.5.0-linux-armv6l.tar.gz
-$ tar -xvf node-v4.5.0-linux-armv6l.tar.gz
-$ cd node-v4.5.0-linux-armv6l
-$ sudo cp -R * /usr/local/
-$ sudo reboot
-```
+   ```bash
+   $ wget https://nodejs.org/dist/v4.5.0/node-v4.5.0-linux-armv6l.tar.gz
+   $ tar -xvf node-v4.5.0-linux-armv6l.tar.gz
+   $ cd node-v4.5.0-linux-armv6l
+   $ sudo cp -R * /usr/local/
+   $ sudo reboot
+   ```
 
   * After reboot, re-login and execute the following command to verify the NodeJS install.
 
-```bash
-$ node --version
-v4.5.0
-```
+   ```bash
+   $ node --version
+   v4.5.0
+   ```
 
 Now we have a Raspberry Pi Zero connected to our network and running NodeJS; ready to clone a repository and get to work.  I hope this is useful for you.
 
 # Finding Your Pi Zero's IP (if raspberrypi.local doesn't work)
 We need to perform this step only if PuTTY can't connect using [pi@raspberrypi.local].  In that case, there are several methods we can use to find the IP of our Pi Zero.  Try one of these methods:
   * One of the easiest methods is to login to your router and look at the list of connected hosts.  This might give a clue as to the new IP; especially if the raspberrypi name is listed or your other hosts are listed by name.  If it's not clear what the IP is, then try another method.
+
   * If you have an IP scanner, use it.  Chances are, if you have an IP scanner, you know how to use it and you are used to finding IPs of unknown hosts using this method.  We're looking for an open port 22.  So, if your scanner supports particular port scans, this will focus the scan and likely give better results.
+
   * Use an nmap scan [download](https://nmap.org/download.html).  Go to the nmap download page and scroll down to Microsoft Windows binaries and locate [nmap-7.30-setup.exe].  Download and install.  This is the Zenmap GUI for Windows.  Run the program and enter [nmap -p 22 10.10.101.0/24] in the command field as shown here (replacing my LAN IP, 10.10.101.0 in this case, with yours).  
 
   ![](/images/zenmap1.png)
