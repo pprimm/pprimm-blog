@@ -1,13 +1,18 @@
 ---
-title: Headless Raspberry Pi Zero: Setting Up Wifi Directly on an SDHC Card
+title: Headless Raspberry Pi Zero - Setup Wifi Directly on an SDHC Card on Windows 8
 date: 2016-10-03 21:21:57
+updated: 2016-10-07 20:05:00
 tags:
  - Raspberry Pi Zero
  - Raspbian Jessie Lite
  - IoT
  - Headless Wifi
+categories:
+ - Tutorial
 ---
 This tutorial is a follow-up (or addendum, if you will) to [_Headless Raspberry Pi Zero Setup with Ethernet from Ground Zero on Windows 8_](/2016/10/02/Pi-Zero-from-Ground-Zero/) which shows how to get a Pi Zero running and connected to a network without using a monitor, keyboard or mouse.  In this follow-up tutorial, we are going to address getting a Pi Zero running with only a Wifi dongle.  This is only ONE way to do this.  Your mileage may vary.
+
+![](/images/Pi-sdhc.jpg)
 
 ## Equipment You'll Need
  - Your Windows 8 PC with SD interface or adapter
