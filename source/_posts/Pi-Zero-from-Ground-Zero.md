@@ -6,6 +6,7 @@ tags:
  - Raspbian Jessie Lite
  - IoT
  - NodeJS
+ - Headless Ethernet
 ---
 I love the idea of using the [Raspberry Pi Zero](https://www.raspberrypi.org/products/pi-zero/) as a [headless](https://en.wikipedia.org/wiki/Headless_computer) home automation IoT appliance.  Actually, using multiple Zero(s) to run independent NodeJS services sounds very appealing.  I've been wanting to do something like this for years.  The main thing that kept me from my plan to have my house running completely on the Raspberry Pi platform was my inability to easily and effectively setup a Pi for NodeJS; particularly, the Pi Zero due to its no on-board network interface.  I wanted to be able to start with a blank microSDHC and end up with an SSH enabled device connected to the network and running NodeJS without needing a keyboard and monitor during the process.  Here's what I do to get my headless Zero(s) up and running in a very short amount of time.  
 
@@ -14,7 +15,7 @@ Please refer to the following component descriptions during this tutorial:
    ![](/images/RASP_PI_ZERO_BESCHREIBUNG2.png)
 Image courtesy cdn-reichelt.de and may be subject copyright
 
-## The Starting Point
+## Equipment You'll Need
  - Your Windows 8 PC with SD interface or adapter
  - Pi Zero $5 [buy](https://www.adafruit.com/product/2885)
  - Blank 8GB microSDHC w/Adapter $7.50 [buy](https://www.amazon.com/gp/product/B00NICVTA2/)
@@ -23,6 +24,8 @@ Image courtesy cdn-reichelt.de and may be subject copyright
  - _(Optional)_ Adafruit Pi Protector [buy](https://www.adafruit.com/products/2883)
 
 If you want to purchase a microSDHC card with Jessie Lite already on it, get it [here](https://www.adafruit.com/products/2820) and skip straight to section **Boot the Pi Zero and Connect with PuTTY**.
+
+**Updated 2016-10-03:** I added a very short tutorial for using a Wifi dongle instead of the USB Ethernet adapter like the one above.  If you want go wireless instead of using wired Ethernet, see [the wifi post](/2016/10/03/Pi-Zero-Headless-Wifi/).  The wifi tutorial shows only the steps needed to configure the wifi.  You will still need to follow all the steps in this tutorial.  I'll make a note below as to when it's appropriate to jump to the wifi tutorial.
 
 Given that a Pi 3 is $40+ with power adapters, etc., it's a good way to go when you don't need a quad-core and 1G RAM.
 ## Software You'll Need
@@ -55,7 +58,9 @@ Follow these simple steps to prepare your microSC Card:
    ![](/images/Win32DiskImager.png)
    **_AGAIN, INSURE YOU HAVE SELECTED THE CORRECT DRIVE LETTER_**
 
-   Carl Recktenwald Jr. has a [YouTube Video](https://www.youtube.com/watch?v=AVM7QaSndf8) that shows using SDFormatter and Win32 Disk Imager.  You can watch up to 2:30 where then begins a boot using monitor, keyboard and mouse.  But, we're going headless, so the remainder of that video doesn't pertain to what we're trying to accomplish.
+Carl Recktenwald Jr. has a [YouTube Video](https://www.youtube.com/watch?v=AVM7QaSndf8) that shows using SDFormatter and Win32 Disk Imager.  You can watch up to 2:30 where then begins a boot using monitor, keyboard and mouse.  But, we're going headless, so the remainder of that video doesn't pertain to what we're trying to accomplish.
+
+**Running with Wifi**:  If you want to use a wifi dongle instead of the Ethernet adapter, perform the steps in my [wifi tutorial](/2016/10/03/Pi-Zero-Headless-Wifi/) now.  Then, come back and continue with the next section for booting the Pi Zero.
 
 # Boot the Pi Zero and Connect with PuTTY
 Follow these steps to boot and connect to your Pi Zero over SSH:
@@ -87,7 +92,7 @@ Follow these steps to boot and connect to your Pi Zero over SSH:
    $ sudo raspi-config
    ```
 
-   **Update 2016-10-03:** _A RasPi user notified me that starting with Jessie 2016-05-10, a script will auto-expand the file system on first boot.  You don't need to perform this step.  But, if you are interested in bringing up the Configuration Tool and looking around, you can go ahead and continue as a learning exercise; otherwise, jump down to step 5._
+   **Updated 2016-10-03:** _A RasPi user notified me that starting with Jessie 2016-05-10, a script will auto-expand the file system on first boot.  You don't need to perform this step.  But, if you are interested in bringing up the Configuration Tool and looking around, you can go ahead and continue as a learning exercise; otherwise, jump down to step 5._
 
    Executing this command show you the configuration tool.  The only configuration item we're going to do now is expand the file system.  Select the fist item [1. Expand Filesystem] and select [Enter].  The filesystem will be expanded to used the full size of the SD Card.
 
