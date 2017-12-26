@@ -12,7 +12,7 @@ categories:
  - Tutorial
 ---
 I love the idea of using the [Raspberry Pi Zero](https://www.raspberrypi.org/products/pi-zero/) as a [headless](https://en.wikipedia.org/wiki/Headless_computer) home automation IoT appliance.  Actually, using multiple Zero(s) to run independent NodeJS services sounds very appealing.  I've been wanting to do something like this for years.  The main thing that kept me from my plan to have my house running completely on the Raspberry Pi platform was my inability to easily and effectively setup a Pi for NodeJS; particularly, the Pi Zero due to its no on-board network interface.  I wanted to be able to start with a blank microSDHC and end up with an SSH enabled device connected to the network and running NodeJS without needing a keyboard and monitor during the process.  Here's what I do to get my headless Zero(s) up and running in a very short amount of time.  
-
+<!-- more -->
 Please refer to the following component descriptions during this tutorial:
 
    ![](/images/RASP_PI_ZERO_BESCHREIBUNG2.png)

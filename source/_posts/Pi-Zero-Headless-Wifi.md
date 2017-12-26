@@ -11,6 +11,7 @@ categories:
  - Tutorial
 ---
 This tutorial is a follow-up (or addendum, if you will) to [_Headless Raspberry Pi Zero Setup with Ethernet from Ground Zero on Windows 8_](/2016/10/02/Pi-Zero-from-Ground-Zero/) which shows how to get a Pi Zero running and connected to a network without using a monitor, keyboard or mouse.  In this follow-up tutorial, we are going to address getting a Pi Zero running with only a Wifi dongle.  This is only ONE way to do this.  Your mileage may vary.
+<!-- more -->
 
 ![](/images/Pi-sdhc.jpg)
 
