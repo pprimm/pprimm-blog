@@ -4,7 +4,7 @@
 
 # Site
 title: My Technology Blog
-subtitle: Tech bloggin site
+subtitle: Tech blogging site
 description:
 author: Pierce Primm, Sr.
 language: en
@@ -16,6 +16,13 @@ url: http://pprimm.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
+
+# Menu
+menu:
+  Home: .
+  Archives: archives
+  Categories: categories
+  Tags: tags
 
 # Directory
 source_dir: source
